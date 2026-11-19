@@ -1,0 +1,27 @@
+
+WEEK 5 - BEFORE REFACTORING
+
+Ruff:
+5 errors
+
+Ruff Statistics:
+2 F401 unused-import
+1 B006 mutable-argument-default
+1 I001 unsorted-imports
+1 F841 unused-variable
+
+Pylint:
+4.86/10
+
+Issues:
+C0114 missing-module-docstring
+C0116 missing-function-docstring
+W0102 dangerous-default-value
+R0913 too-many-arguments
+R0917 too-many-positional-arguments
+C0121 singleton-comparison
+W0613 unused-argument
+W0612 unused-variable
+C0103 invalid-name
+E0606 possibly-used-before-assignment
+W0611 unused-import
