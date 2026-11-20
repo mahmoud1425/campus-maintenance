@@ -30,3 +30,5 @@ Working on the refactoring helped us understand how small changes can improve co
 
 ## Pairing Reflection
 
+We worked as driver and navigator and switched roles between the kata and the refactoring. Having a second person reading the code caught things I would have missed alone, such as unclear variable names and the edge cases that needed tests. Writing the characterization tests together made us more confident that the refactor kept the old behavior, so the changes felt safer than working solo. The main cost was that we had to explain our reasoning out loud, but that also made the final code easier to understand.
+
