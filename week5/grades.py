@@ -1,3 +1,4 @@
+"""Grade calculation kata."""
 
 MIN_SCORE = 0
 MAX_SCORE = 100
@@ -9,16 +10,16 @@ D_GRADE_MIN = 60
 
 
 def letter_grade(score):
+    """Return the letter grade for a numeric score from 0 to 100."""
     if score < MIN_SCORE or score > MAX_SCORE:
         raise ValueError("Score must be between 0 and 100")
 
     if score >= A_GRADE_MIN:
         return "A"
-    elif score >= B_GRADE_MIN:
+    if score >= B_GRADE_MIN:
         return "B"
-    elif score >= C_GRADE_MIN:
+    if score >= C_GRADE_MIN:
         return "C"
-    elif score >= D_GRADE_MIN:
+    if score >= D_GRADE_MIN:
         return "D"
-    else:
-        return "F"
+    return "F"

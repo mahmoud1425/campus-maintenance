@@ -1,6 +1,5 @@
 
 import pytest
-
 from grades import letter_grade
 
 
