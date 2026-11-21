@@ -1,8 +1,9 @@
+from abc import ABC, abstractmethod
 FEE_PER_HOUR = 1200
-class SiblingPolicy:
+class SiblingPolicy(ABC):
+    @abstractmethod
     def fee(self, hours):
-        raise NotImplementedError
-
+        pass
 class RegularPolicy(SiblingPolicy):
     def fee(self, hours):
         return hours * FEE_PER_HOUR
