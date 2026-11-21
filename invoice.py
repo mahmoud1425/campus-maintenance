@@ -1,31 +1,35 @@
-from abc import ABC, abstractmethod
 FEE_PER_HOUR = 1200
-class SiblingPolicy(ABC):
-    @abstractmethod
-    def fee(self, hours):
-        pass
-class RegularPolicy(SiblingPolicy):
+SIBLING_DISCOUNT = 0.25
+
+
+class RegularPolicy:
     def fee(self, hours):
         return hours * FEE_PER_HOUR
 
 
-class ScholarshipPolicy(SiblingPolicy):
+class ScholarshipPolicy:
     def fee(self, hours):
         return hours * FEE_PER_HOUR * 0.5
 
 
-class InternationalPolicy(SiblingPolicy):
+class InternationalPolicy:
     RATE = 2000
     SERVICE_FEE = 5000
 
     def fee(self, hours):
         return hours * self.RATE + self.SERVICE_FEE
-    
+
+
+class SiblingPolicy:
+    def fee(self, hours):
+        return hours * FEE_PER_HOUR * (1 - SIBLING_DISCOUNT)
+
 
 POLICIES = {
     "regular": RegularPolicy(),
     "scholarship": ScholarshipPolicy(),
     "international": InternationalPolicy(),
+    "sibling": SiblingPolicy(),
 }
 
 
