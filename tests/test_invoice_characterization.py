@@ -1,7 +1,4 @@
 import pytest
-import invoice
-from invoice import make_invoice
-from registration import Student
 
 from invoice import make_invoice
 from registration import Student
@@ -38,15 +35,9 @@ def test_invoice_uses_injected_writer(student):
     make_invoice(student, "regular", writer=fake)
     assert fake.saved["2023001"] == "Invoice for 2023001: 7200 EGP"
 
-def test_invoice_policies_are_siblings():
-    assert issubclass(RegularPolicy, SiblingPolicy)
-    assert issubclass(ScholarshipPolicy, SiblingPolicy)
-    assert issubclass(InternationalPolicy, SiblingPolicy)
-def test_invoice_policies_are_siblings():
-    assert hasattr(invoice, "SiblingPolicy")
 
-    assert issubclass(invoice.RegularPolicy, invoice.SiblingPolicy)
-    assert issubclass(invoice.ScholarshipPolicy, invoice.SiblingPolicy)
-    assert issubclass(invoice.InternationalPolicy, invoice.SiblingPolicy)
-
+def test_sibling_discount(student):
+    fake = FakeWriter()
+    make_invoice(student, "sibling", writer=fake)
+    assert fake.saved["2023001"] == "Invoice for 2023001: 5400 EGP"
     
