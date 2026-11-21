@@ -1,23 +1,25 @@
 FEE_PER_HOUR = 1200
+class SiblingPolicy:
+    def fee(self, hours):
+        raise NotImplementedError
 
-
-class RegularPolicy:
+class RegularPolicy(SiblingPolicy):
     def fee(self, hours):
         return hours * FEE_PER_HOUR
 
 
-class ScholarshipPolicy:
+class ScholarshipPolicy(SiblingPolicy):
     def fee(self, hours):
         return hours * FEE_PER_HOUR * 0.5
 
 
-class InternationalPolicy:
+class InternationalPolicy(SiblingPolicy):
     RATE = 2000
     SERVICE_FEE = 5000
 
     def fee(self, hours):
         return hours * self.RATE + self.SERVICE_FEE
-
+    
 
 POLICIES = {
     "regular": RegularPolicy(),
