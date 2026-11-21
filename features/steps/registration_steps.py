@@ -27,6 +27,13 @@ def step_register(context, code, hours):
     except RegistrationError as e:
         context.error = str(e)
 
+@when('the student drops "{code}"')
+def step_drop(context, code):
+    try:
+        context.student.drop(code)
+    except RegistrationError as e:
+        context.error = str(e)
+
 
 @then("the student has {n:d} registered hours")
 def step_hours(context, n):
@@ -42,3 +49,4 @@ def step_refused(context, text):
 def step_result(context, result):
     actual = "refused" if context.error else "accepted"
     assert actual == result, actual
+
