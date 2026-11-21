@@ -1,9 +1,9 @@
 # Task C1 — Completed Code Smells Table
 
-| Code Smell | Before Refactoring | Improvement |
+| Smell | Where | Principle it breaks |
 |---|---|---|
-| Long Method / Multiple Responsibilities | Invoice calculation, text formatting, file writing, and printing were handled together. | Separated fee calculation using policy classes and used a writer for file output. |
-| Conditional Logic | `if/elif` statements selected the fee calculation based on student type. | Replaced conditional fee calculation with separate policy classes. |
-| Magic Numbers | Fee rates and service fees were hard-coded inside calculations. | Introduced named constants and class attributes for fee values. |
-| Poor Resource Management | The file was opened and closed manually. | Used `with open(...)` to handle the file safely. |
-
+| Long if/elif chain on `kind` | Loop body and after the loop in `make_invoice` | OCP: a new student type means editing the function |
+| One function does too much | `make_invoice` calculates, formats, writes a file and prints | SRP: more than one reason to change |
+| Magic numbers (1200, 0.5, 2000, 5000) | Hard-coded inside the calculations | Readability / maintainability |
+| File opened without `with` | `open(...)` / `f.close()` in `make_invoice` | Poor resource management; also DIP (disk is hard-wired) |
+| Fee calculated per course | Inside the `for` loop, though only total hours matter | Needless complexity |
